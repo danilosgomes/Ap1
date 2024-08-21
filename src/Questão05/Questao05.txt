@@ -1,0 +1,45 @@
+O props drilling acontece quando um componente pai deseja passar dados para um componente filho que possui hereditariedade muito grande. Este processo pode se tornar inviável de manter, já que seria necessário passar a via props de filho para filho, até chegar no componente desejado.
+
+A utilização de Contextos resolve esse problema, pois ele permite que você passe dados entre qualquer componentes sem a necessidade de passar manualmente via props para cada componente. Desta forma, resolvemos essa vulnerabilidade de possível falha.
+
+Exemplo:
+
+Abaixo, note que o contexto myContext guarda o dado de 'Nota'. O componente A é o provedor desse contexto. Dessa forma, podemos usar o  hook useContext em qualquer componente da árvore para acessar o 'nota'. 
+                    
+------------------------------------------------------------
+
+import { createContext, useContext } from 'react';
+
+const myContext = createContext();
+
+const App = () => {
+
+    const nota = "10"
+
+    return (
+        <myContext.Provider value={valor}>
+        <A />
+        </myContext.Provider>
+    )
+    }
+
+const A = () => {
+return <B />;
+};
+
+const B = () => {
+return <C />;
+};
+
+const C = () => {
+return <D />;
+};
+
+const D = () => {
+const nota = useContext(myContext);
+    return (
+        <div>
+            <p>{nota}</p>
+        </div>
+    )
+}
