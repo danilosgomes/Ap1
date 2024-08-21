@@ -3,7 +3,6 @@ import Questao01A from "./Questao01/Questao01A";
 import Questao02 from "./Questao02/Questao02";
 import Questao03 from "./Questao03/Questao03";
 import Questao04 from "./Questao04/Questao04";
-import Questao05 from "./Questão05/Questao05";
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
       <Questao02 /> <br />
       <Questao03 /> <br />
       <Questao04 /> <br />
-      <Questao05 />
     </div>
   );
 }
